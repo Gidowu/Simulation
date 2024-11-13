@@ -36,7 +36,8 @@ public:
       //Function to return the waiting time of a customer.
       //Postcondition: The value of waitingTime is returned.
 
-    void setWaitingTime(int time);
+    void setWaitingTime(int time){
+      waitingTime = time;}
       //Function to set the waiting time of a customer.
       //Postcondition: waitingTime = time;
 
@@ -44,17 +45,21 @@ public:
       //Function to increment the waiting time by one time unit.
       //Postcondition: waitingTime++;
 
-    int getArrivalTime() const;
+    int getArrivalTime() const{
+      return arrivalTime;}
       //Function to return the arrival time of a customer.
       //Postcondition: The value of arrivalTime is returned.
 
-    int getTransactionTime() const;
+    int getTransactionTime() const{
+      return transactionTime;}
       //Function to return the transaction time of a customer.
       //Postcondition: The value of transactionTime is returned.
 
-    int getCustomerNumber() const;
+    int getCustomerNumber() const{
+      return customerNumber;}
       //Function to return the customer number.
       //Postcondition: The value of customerNumber is returned.
+
 
 private:
     int customerNumber;
