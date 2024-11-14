@@ -3,6 +3,7 @@
 #include <iomanip>
 #include "simulation.h"
 #include "queueAsArray.h"
+#include "simulationImp.cpp"
 
 using namespace std;
 
@@ -45,7 +46,8 @@ void runSimulation()
     int servedCount = 0;
     int customersLeftInQueue = 0;
 
-    queueType<int> waitingQueue;  
+    queueType<int> waitingQueue;
+
     serverListType servers(numOfServers);
 
     for (clock = 1; clock <= simulationTime; clock++)
@@ -66,6 +68,7 @@ void runSimulation()
         int freeServerID = servers.getFreeServerID();
         if (freeServerID != -1 && !waitingQueue.isEmptyQueue())
         {
+            int customer = waitingQueue.front();
             waitingQueue.deleteQueue();
             servers.setServerBusy(freeServerID, transactionTime);
             servedCount++;
