@@ -1,35 +1,107 @@
 #include <iostream>
 #include <string>
 #include <cstdlib>
-#include <ctime>
 #include "simulation.h"
 #include "queueAsArray.h"
 using namespace std;
  
 //*************** customerType ************
-void customerType::setCustomerInfo(int customerNum, int arrTime, int transTime) {
-    customerNumber = customerNum;
-    arrivalTime = arrTime;
-    transactionTime = transTime;
+void customerType::setCustomerInfo(int cN, int arrvTime, int wTime, int tTime)
+{
+    customerNumber = cN;
+    arrivalTime = arrvTime;
+    waitingTime = wTime;
+    transactionTime = tTime;
 }
-
-void customerType::setWaitingTime(int time) {
+customerType::customerType(int customerN, int arrvTime, int wTime, int tTime)
+{
+    setCustomerInfo(customerN, arrvTime, wTime, tTime);
+}
+int customerType::getWaitingTime() const
+{
+    return waitingTime;
+}
+void customerType::incrementWaitingTime()
+{
+    waitingTime++;
+}
+void customerType::setWaitingTime(int time)
+{
     waitingTime = time;
 }
-
-int customerType::getArrivalTime() const {
+int customerType::getArrivalTime() const
+{
     return arrivalTime;
 }
-
-int customerType::getTransactionTime() const {
+int customerType::getTransactionTime() const
+{
     return transactionTime;
 }
-
-int customerType::getCustomerNumber() const {
+int customerType::getCustomerNumber() const
+{
     return customerNumber;
 }
-
-
+//**************** serverType **********
+serverType::serverType()
+{
+    status = "free";
+    transactionTime = 0;
+}
+bool serverType::isFree() const
+{
+    return (status == "free");
+}
+void serverType::setBusy()
+{
+    status = "busy";
+}
+void serverType::setFree()
+{
+    status = "free";
+}
+void serverType::setTransactionTime(int t)
+{
+    transactionTime = t;
+}
+void serverType::setTransactionTime()
+{
+    int time;
+    time = currentCustomer.getTransactionTime();
+    transactionTime = time;
+}
+void serverType::decreaseTransactionTime()
+{
+    transactionTime--;
+}
+int serverType::getRemainingTransactionTime() const
+{
+    cout << "See Programming Exercise 8 at the end of this chapter." << endl;
+    return 0;
+}
+void serverType::setCurrentCustomer(customerType cCustomer)
+{
+    cout << "See Programming Exercise 8 at the end of this chapter." << endl;
+}
+int serverType::getCurrentCustomerNumber() const
+{
+    cout << "See Programming Exercise 8 at the end of this chapter." << endl;
+    return 0;
+}
+int serverType::getCurrentCustomerArrivalTime() const
+{
+    cout << "See Programming Exercise 8 at the end of this chapter." << endl;
+    return 0;
+}
+int serverType::getCurrentCustomerWaitingTime() const
+{
+    cout << "See Programming Exercise 8 at the end of this chapter." << endl;
+    return 0;
+}
+int serverType::getCurrentCustomerTransactionTime() const
+{
+    cout << "See Programming Exercise 8 at the end of this chapter." << endl;
+    return 0;
+}
 //************** serverListType ***********
 serverListType::serverListType(int num)
 {
@@ -118,27 +190,4 @@ void waitingCustomerQueueType::updateWaitingQueue()
         cust.incrementWaitingTime();
         addQueue(cust);
 	}
-}
-void runSimulation(int simulationTime, int transactionTimeLimit) {
-    std::queue<customerType> customerQueue;
-    serverType server;
-    int currentTime = 0;
-
-    while (currentTime < simulationTime) {
-        // Example logic to simulate new customer arrivals and server transaction
-        if (server.isFree() && !customerQueue.empty()) {
-            server.setCurrentCustomer(customerQueue.front());
-            customerQueue.pop();
-        }
-
-        // Process server's remaining transaction time
-        if (!server.isFree()) {
-            server.getRemainingTransactionTime()--;
-            if (server.getRemainingTransactionTime() == 0) {
-                server.setFree();
-            }
-        }
-
-        currentTime++;
-    }
 }
