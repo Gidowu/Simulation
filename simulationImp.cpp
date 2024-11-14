@@ -74,33 +74,28 @@ void serverType::decreaseTransactionTime()
     transactionTime--;
 }
 int serverType::getRemainingTransactionTime() const
-{
-    cout << "See Programming Exercise 8 at the end of this chapter." << endl;
-    return 0;
+{    
+    return transactionTime;
 }
 void serverType::setCurrentCustomer(customerType cCustomer)
 {
-    cout << "See Programming Exercise 8 at the end of this chapter." << endl;
+    currentCustomer = cCustomer;
 }
 int serverType::getCurrentCustomerNumber() const
 {
-    cout << "See Programming Exercise 8 at the end of this chapter." << endl;
-    return 0;
+    return currentCustomer.getCustomerNumber();
 }
 int serverType::getCurrentCustomerArrivalTime() const
 {
-    cout << "See Programming Exercise 8 at the end of this chapter." << endl;
-    return 0;
+    return currentCustomer.getArrivalTime();
 }
 int serverType::getCurrentCustomerWaitingTime() const
 {
-    cout << "See Programming Exercise 8 at the end of this chapter." << endl;
-    return 0;
+    return currentCustomer.getWaitingTime();
 }
 int serverType::getCurrentCustomerTransactionTime() const
 {
-    cout << "See Programming Exercise 8 at the end of this chapter." << endl;
-    return 0;
+    return currentCustomer.getTransactionTime();
 }
 //************** serverListType ***********
 serverListType::serverListType(int num)
