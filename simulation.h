@@ -112,7 +112,9 @@ public:
       //Postcondition:
       //   transactionTime = currentCustomer.transactionTime;
 
-    int getRemainingTransactionTime() const;
+    int getRemainingTransactionTime() const{
+      return transactionTime;
+    }
       //Function to return the remaining transaction time.
       //Postcondition: The value of transactionTime is returned.
 
@@ -120,29 +122,39 @@ public:
       //Function to decrease the transactionTime by 1 unit.
       //Postcondition: transactionTime--;
 
-    void setCurrentCustomer(customerType cCustomer);
+    void setCurrentCustomer(customerType cCustomer){
+      currentCustomer = cCustomer;
+    }
       //Function to set the info of the current customer
       //according to the parameter cCustomer.
       //Postcondition: currentCustomer = cCustomer;
 
-    int getCurrentCustomerNumber() const;
+    int getCurrentCustomerNumber() const{
+      return currentCustomer.getCustomerNumber();
+    }
       //Function to return the customer number of the current
       //customer.
       //Postcondition: The value of customerNumber of the
       //    current customer is returned.
 
-    int getCurrentCustomerArrivalTime() const;
+    int getCurrentCustomerArrivalTime() const{
+      return currentCustomer.getArrivalTime();
+    }
       //Function to return the arrival time of the current
       //customer.
       //Postcondition: The value of arrivalTime of the current
       //    customer is returned.
 
-    int getCurrentCustomerWaitingTime() const;
+    int getCurrentCustomerWaitingTime() const{
+      return currentCustomer.getWaitingTime();
+    }
       //Function to return the current waiting time of the
       //current customer.
       //Postcondition: The value of transactionTime is returned.
 
-    int getCurrentCustomerTransactionTime() const;
+    int getCurrentCustomerTransactionTime() const{
+      return currentCustomer.getTransactionTime();
+    }
       //Function to return the transaction time of the
       //current customer.
       //Postcondition: The value of transactionTime of the
